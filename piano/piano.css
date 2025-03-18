@@ -1,0 +1,36 @@
+body {
+    background-color: gray;
+}
+
+.keys {
+    background-color: rgb(235, 49, 49);
+}
+
+.thekeys {
+    margin-left: .1%;
+    border: 3px solid black;
+    list-style-type: none;
+    float: left;
+}
+
+.black-key {
+    width: 1%;
+    background-color: black;
+    height: 200px;
+    left: 1%;
+    font-style: italic;
+    color: white;
+}
+
+.white-key {
+    background-color: white;
+    width: 10%;
+    height: 500px;
+    color: black;
+
+}
+
+
+li {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
