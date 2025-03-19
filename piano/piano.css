@@ -1,25 +1,33 @@
+* {
+    box-sizing: border-box;
+}
+
+
 body {
     background-color: gray;
 }
 
 .keys {
     background-color: rgb(235, 49, 49);
+    
 }
 
-.thekeys {
-    margin-left: .1%;
+.thekey {
     border: 3px solid black;
     list-style-type: none;
     float: left;
+    text-align: center;
+
 }
 
 .black-key {
-    width: 1%;
+    width: 5%;
     background-color: black;
-    height: 200px;
-    left: 1%;
+    height: 350px;
     font-style: italic;
     color: white;
+
+
 }
 
 .white-key {
@@ -27,10 +35,11 @@ body {
     width: 10%;
     height: 500px;
     color: black;
-
 }
 
 
 li {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 100%;
+
 }

@@ -4,20 +4,28 @@
         <link rel="stylesheet" href="piano.css">
     </head>
     <body>
-        <div class="piano"></div>
+        <audio id="testingNote" src="notes/piano-mp3_Gb5.mp3"></audio>
+        <div class="wholepiano"></div>
             <ul class="keys">
-                <li class="thekeys white-key">C</li>
-                <li class="thekeys black-key">C#</li>
-                <li class="thekeys white-key">D</li>
-                <li class="thekeys black-key">D#</li>
-                <li class="thekeys white-key">E</li>
-                <li class="thekeys white-key">F</li>
-                <li class="thekeys black-key">F#</li>
-                <li class="thekeys white-key">G</li>
-                <li class="thekeys black-key">G#</li>
-                <li class="thekeys white-key">A</li>
-                <li class="thekeys black-key">A#</li>
-                <li class="thekeys white-key">B</li>
+                <li onclick="noteSound()" id="testingKey" class="thekey white-key">C</li>
+                <li class="thekey black-key">C#</li>
+                <li class="thekey white-key">D</li>
+                <li class="thekey black-key">D#</li>
+                <li class="thekey white-key">E</li>
+                <li class="thekey white-key">F</li>
+                <li class="thekey black-key">F#</li>
+                <li class="thekey white-key">G</li>
+                <li class="thekey black-key">G#</li>
+                <li class="thekey white-key">A</li>
+                <li class="thekey black-key">A#</li>
+                <li class="thekey white-key">B</li>
             </ul>
+        <script>
+            let note = document.getElementById("testingNote");
+            function noteSound() {
+                note.play();
+            }
+
+        </script>
     </body>
 </html>
