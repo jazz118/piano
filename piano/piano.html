@@ -22,9 +22,8 @@
 
     <div class="wholepiano"></div>
     <ul class="keys">
-        <li onmousedown="noteSound1()" onmouseup="stopPlaying()" class="thekey white-key">C</li>
-        <li onmousedown="noteSound2()" onmouseup="stopPlaying()" id="hovering" class="thekey first-black black-key">C#
-        </li>
+        <li onmouseover="changingKeyColor()" onmouseout="revertKeyBackToNormal()" onmousedown="noteSound1()" onmouseup="stopPlaying()" class="thekey white-key">C</li>
+        <li onmousedown="noteSound2()" onmouseup="stopPlaying()" id="hovering" class="thekey first-black black-key">C#</li>
         <li onmousedown="noteSound3()" onmouseup="stopPlaying()" class="thekey white-key">D</li>
         <li onmousedown="noteSound4()" onmouseup="stopPlaying()" class="thekey second-black black-key">D#</li>
         <li onmousedown="noteSound5()" onmouseup="stopPlaying()" class="thekey white-key">E</li>
@@ -95,6 +94,16 @@
         let note10 = document.getElementById("testingNote10");
         let note11 = document.getElementById("testingNote11");
         let note12 = document.getElementById("testingNote12");
+
+        function changingKeyColor() {
+            note1.style.backgroundColor="gray";
+        }
+        function revertKeyBackToNormal() {
+            note1.style.backgroundColor="white";
+        }
+
+
+
 
         function stopPlaying() {
             //note1.muted = true;

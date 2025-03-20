@@ -21,9 +21,11 @@ body {
 
 }
 
+/*
 .thekey:hover {
     background-color: green;
 }
+    */
 
 .black-key {
     width: 5%;
@@ -53,10 +55,11 @@ body {
 .fourth-black {
     left: 48.5%;
 }
-
+/*
 .fifth-black {
     left: 58.5%;
 }
+    */
 
 .white-key {
     background-color: white;
