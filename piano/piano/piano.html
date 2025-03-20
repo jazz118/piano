@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Piano Cool</title>
+    <link rel="stylesheet" href="piano.css">
+</head>
+
+<body>
+    <audio id="testingNote1" src="notes/piano-mp3_C5.mp3"></audio>
+    <audio id="testingNote2" src="notes/piano-mp3_Db5.mp3"></audio>
+    <audio id="testingNote3" src="notes/piano-mp3_D5.mp3"></audio>
+    <audio id="testingNote4" src="notes/piano-mp3_Eb5.mp3"></audio>
+    <audio id="testingNote5" src="notes/piano-mp3_E5.mp3"></audio>
+    <audio id="testingNote6" src="notes/piano-mp3_F5.mp3"></audio>
+    <audio id="testingNote7" src="notes/piano-mp3_Gb5.mp3"></audio>
+    <audio id="testingNote8" src="notes/piano-mp3_G5.mp3"></audio>
+    <audio id="testingNote9" src="notes/piano-mp3_Ab5.mp3"></audio>
+    <audio id="testingNote10" src="notes/piano-mp3_A5.mp3"></audio>
+    <audio id="testingNote11" src="notes/piano-mp3_Bb5.mp3"></audio>
+    <audio id="testingNote12" src="notes/piano-mp3_B5.mp3"></audio>
+
+    <div class="wholepiano"></div>
+    <ul class="keys">
+        <li onmousedown="noteSound1()" onmouseup="stopPlaying()" class="thekey white-key">C</li>
+        <li onmousedown="noteSound2()" onmouseup="stopPlaying()" id="hovering" class="thekey first-black black-key">C#
+        </li>
+        <li onmousedown="noteSound3()" onmouseup="stopPlaying()" class="thekey white-key">D</li>
+        <li onmousedown="noteSound4()" onmouseup="stopPlaying()" class="thekey second-black black-key">D#</li>
+        <li onmousedown="noteSound5()" onmouseup="stopPlaying()" class="thekey white-key">E</li>
+        <li onmousedown="noteSound6()" onmouseup="stopPlaying()" class="thekey white-key">F</li>
+        <li onmousedown="noteSound7()" onmouseup="stopPlaying()" class="thekey third-black black-key">F#</li>
+        <li onmousedown="noteSound8()" onmouseup="stopPlaying()" class="thekey white-key">G</li>
+        <li onmousedown="noteSound9()" onmouseup="stopPlaying()" class="thekey fourth-black black-key">G#</li>
+        <li onmousedown="noteSound10()" onmouseup="stopPlaying()" class="thekey white-key">A</li>
+        <li onmousedown="noteSound11()" onmouseup="stopPlaying()" class="thekey fifth-black black-key">A#</li>
+        <li onmousedown="noteSound12()" onmouseup="stopPlaying()" class="thekey white-key">B</li>
+    </ul>
+    <script>
+        navigator.requestMIDIAccess()
+            .then(onMIDISuccess, onMIDIFailure);
+        function onMIDISuccess(midiAccess) {
+            for (const input of midiAccess.inputs.values()) {
+                input.onmidimessage = getMIDIMessage;
+            }
+        }
+        function onMIDIFailure() {
+            console.log('Could not access MIDI devices.');
+        }
+
+        function getMIDIMessage(message) {
+            const command = message.data[0];
+            const note = message.data[1];
+            const velocity = (message.data.length > 2) ? message.data[2] : 0;
+
+            switch (command) {
+                case 144: // Note on
+                    if (velocity > 0) {
+                        noteOn(note, velocity);
+                    } else {
+                        noteOff(note);
+                    }
+                    break;
+                case 128: // Note off
+                    noteOff(note);
+                    break;
+                // Handle other MIDI commands if needed (e.g., pitch bend, control change)
+            }
+        }
+
+        function noteOn(note, velocity) {
+            console.log(`Note on: ${note}, velocity: ${velocity}`);
+            if (note = 48) {
+                noteSound1()
+            }
+
+
+            // Add your code to handle note on event (e.g., play sound)
+        }
+
+        function noteOff(note) {
+            console.log(`Note off: ${note}`);
+            // Add your code to handle note off event (e.g., stop sound)
+        }
+
+        let note1 = document.getElementById("testingNote1");
+        let note2 = document.getElementById("testingNote2");
+        let note3 = document.getElementById("testingNote3");
+        let note4 = document.getElementById("testingNote4");
+        let note5 = document.getElementById("testingNote5");
+        let note6 = document.getElementById("testingNote6");
+        let note7 = document.getElementById("testingNote7");
+        let note8 = document.getElementById("testingNote8");
+        let note9 = document.getElementById("testingNote9");
+        let note10 = document.getElementById("testingNote10");
+        let note11 = document.getElementById("testingNote11");
+        let note12 = document.getElementById("testingNote12");
+
+        function stopPlaying() {
+            //note1.muted = true;
+            note1.pause();
+            note2.pause();
+            note3.pause();
+            note4.pause();
+            note5.pause();
+            note6.pause();
+            note7.pause();
+            note8.pause();
+            note9.pause();
+            note10.pause();
+            note11.pause();
+            note12.pause();
+        }
+
+        function noteSound1() {
+            //note1.muted = false;
+            note1.play();
+        }
+
+        function noteSound2() {
+            note2.play()
+            let hoverKey = document.getElementById("hovering")
+            hovering.style.backgroundColor = "blue";
+        }
+
+        function noteSound3() {
+            note3.play()
+        }
+
+        function noteSound4() {
+            note4.play()
+        }
+
+        function noteSound5() {
+            note1.play();
+        }
+
+        function noteSound6() {
+            note6.play()
+        }
+
+        function noteSound7() {
+            note7.play()
+        }
+
+        function noteSound8() {
+            note8.play()
+        }
+
+        function noteSound9() {
+            note9.play()
+        }
+        function noteSound10() {
+            note10.play()
+        }
+
+        function noteSound11() {
+            note11.play();
+        }
+
+        function noteSound12() {
+            note12.play()
+        }
+
+        document.addEventListener('keydown', function (event) {
+            console.log(event.key)
+            return (event.key.toLowerCase() == 'a') ? noteSound1() :
+                (event.key.toLowerCase() == 's') ? noteSound2() :
+                    (event.key.toLowerCase() == 'd') ? noteSound3() :
+                        (event.key.toLowerCase() == 'f') ? noteSound4() :
+                            (event.key.toLowerCase() == 'g') ? noteSound5() :
+                                (event.key.toLowerCase() == 'h') ? noteSound6() :
+                                    (event.key.toLowerCase() == 'j') ? noteSound7() :
+                                        (event.key.toLowerCase() == 'k') ? noteSound8() :
+                                            (event.key.toLowerCase() == 'l') ? noteSound9() :
+                                                (event.key.toLowerCase() == ';') ? noteSound10() :
+                                                    (event.key.toLowerCase() == 'z') ? noteSound11() :
+                                                        (event.key.toLowerCase() == 'x') ? noteSound12() :
+                                                            "nothing"
+        }
+        );
+    </script>
+</body>
+
+</html>
