@@ -17,7 +17,12 @@ body {
     list-style-type: none;
     float: left;
     text-align: center;
+    position: relative;
 
+}
+
+.thekey:hover {
+    background-color: green;
 }
 
 .black-key {
@@ -26,8 +31,31 @@ body {
     height: 350px;
     font-style: italic;
     color: white;
+    z-index: 1;
+}
 
+.first-black, .second-black, .third-black, .fourth-black, .fifth-black {
+    position: absolute;
+}
 
+.first-black {
+    left: 9.5%;
+
+}
+
+.second-black {
+    left: 19.5%;
+}
+
+.third-black {
+    left: 38.75%;
+}
+.fourth-black {
+    left: 48.5%;
+}
+
+.fifth-black {
+    left: 58.5%;
 }
 
 .white-key {
@@ -35,6 +63,7 @@ body {
     width: 10%;
     height: 500px;
     color: black;
+    position: relative;
 }
 
 
