@@ -1,0 +1,56 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: gray;
+}
+ 
+#keys {
+    background-color: rgb(235, 49, 49);
+
+    padding: 0.125em;
+    width:100%;
+
+    /*
+    height: 510px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    */
+}
+
+#keys > li {
+    list-style-type: none;
+    float: left;
+    border: 3px solid black;
+}
+
+.white {
+    background-color: white;
+
+    width: 6em;
+    height: 500px;
+}
+
+.black {
+    background-color: black;
+
+    position: relative;
+    margin-left: -3em; 
+    right:-1.5em;
+
+    width: 3em;
+    height: 350px;
+
+    z-index: 1;
+}
+
+.clear {
+    clear: both;
+}
+
+li {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 100%;
+}

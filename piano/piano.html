@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Piano Cool</title>
+    <link rel="stylesheet" href="piano.css">
+</head>
+
+<body>
+    <div id="audios"></div>
+    <ul id="keys"></ul>
+
+    <script>
+        navigator.requestMIDIAccess()
+            .then(onMIDISuccess, onMIDIFailure);
+        function onMIDISuccess(midiAccess) {
+            for (const input of midiAccess.inputs.values()) {
+                input.onmidimessage = getMIDIMessage;
+            }
+        }
+        function onMIDIFailure() {
+            console.log('Could not access MIDI devices.');
+        }
+
+        function getMIDIMessage(message) {
+            const command = message.data[0];
+            const note = message.data[1];
+            const velocity = (message.data.length > 2) ? message.data[2] : 0;
+
+            switch (command) {
+                case 144: // Note on
+                    if (velocity > 0) {
+                        noteOn(note, velocity);
+                    } else {
+                        noteOff(note);
+                    }
+                    break;
+                case 128: // Note off
+                    noteOff(note);
+                    break;
+                // Handle other MIDI commands if needed (e.g., pitch bend, control change)
+            }
+        }
+
+        function noteOn(note, velocity) {
+            console.log(`Note on: ${note}, velocity: ${velocity}`);
+            if (note == 48) {
+                play(id)
+            }
+            // Add your code to handle note on event (e.g., play sound)
+        }
+
+        function noteOff(note) {
+            console.log(`Note off: ${note}`);
+            // Add your code to handle note off event (e.g., stop sound)
+        }
+
+
+
+
+        let keyCount = 24;
+        let startingOctave = 4;
+
+        let notesNames = ["C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab", "A", "Bb", "B"];
+
+        //get keys list
+        let keysList = document.getElementById('keys');
+        let audiosDiv = document.getElementById('audios');
+
+        for (let i = 0; i < keyCount; i++) {
+            let isBlack = [1, 3, 6, 8, 10].includes(i % 12);
+
+            let classes = 'white';
+            if (isBlack) {
+                classes = 'black';
+            }
+
+            console.log("<audio src='piano-mp3_" + notesNames[i % 12] + (Math.floor(i / 12) + startingOctave) + ".mp3' id='audio" + i + "'></audio>");
+
+            keysList.innerHTML += '<li onmousedown="play(' + i + ')" onmouseup="stop(' + i + ')" id="key' + i + '" class="' + classes + '"></li>';
+            audiosDiv.innerHTML += "<audio src='notes/piano-mp3_" + notesNames[i % 12] + (Math.floor(i / 12) + startingOctave) + ".mp3' id='audio" + i + "'></audio>";
+        }
+
+        keysList.innerHTML += '<div class="clear"></div>'
+
+        
+
+        document.addEventListener('keydown', function (event) {
+            console.log(event.key)
+            if  (event.key.toLowerCase() == 'a') {
+                audio0.currentTime = 0;
+                //document.getElementById('audio' + id).play();
+                play(audio0)
+                console.log('a was pressed');
+            }
+            if (event.key.toLowerCase() == 's') {
+                audio1.currentTime = 0;
+
+                play(audio1);
+                console.log('s was pressed');
+            }
+        })
+    
+
+
+        //So now, notes automatically generate from just an integer value. All you need to do is figure out... How to play the right sound?
+        //You might have to rename some audio files... Or make some sort of array, but just remember that the keys index (or number or whatever) is your friend
+
+        /*
+        while (play(id)) {
+            li.
+        }
+            */
+        function play(id) {
+            document.getElementById('audio' + id).currentTime = 0;
+            document.getElementById('audio' + id).play();
+            console.log('hello')
+            //while element.classList.contains("classname") - change element's backgroundcolor style to diff color{
+            //keys.keysList.contains
+
+        }
+
+        function stop(id) {
+            document.getElementById('audio' + id).pause();
+        }
+    </script>
+</body>
+
+</html>
