@@ -83,25 +83,77 @@
 
         keysList.innerHTML += '<div class="clear"></div>'
 
+        let keybinds = ['a'];
+
+        let isKeyPressedJSON = {};
+
+        function keybindsForKeys(audio, letter, keyName) {
+            audio.currentTime = 0;
+            audio.play();
+            console.log(`${letter} a was pressed`);
+            keyName.style.backgroundColor = 'green';
+        }
         
+
 
         document.addEventListener('keydown', function (event) {
             console.log(event.key)
-            if  (event.key.toLowerCase() == 'a') {
-                audio0.currentTime = 0;
-                //document.getElementById('audio' + id).play();
-                play(audio0)
-                console.log('a was pressed');
-            }
-            if (event.key.toLowerCase() == 's') {
-                audio1.currentTime = 0;
 
-                play(audio1);
-                console.log('s was pressed');
+            if (!isKeyPressedJSON[event.key.toLowerCase()]) {
+                isKeyPressedJSON[event.key.toLowerCase()] = true;
+           
+                
+                
+
+                if (event.key.toLowerCase() == 'q') {
+                    keybindsForKeys(audio0, event.key.toLowerCase(), key0);
+                }
+                if (event.key.toLowerCase() == '2') {
+                    keybindsForKeys(audio1, event.key.toLowerCase(), key1);
+                }
+                if (event.key.toLowerCase() == 'w') {
+                    keybindsForKeys(audio2, event.key.toLowerCase(), key2);
+                }
+                if (event.key.toLowerCase() == '3') {
+                    keybindsForKeys(audio3, event.key.toLowerCase(), key3);
+                }
+                if (event.key.toLowerCase() == 'e') {
+                    keybindsForKeys(audio4, event.key.toLowerCase(), key4);
+                }
+                if (event.key.toLowerCase() == 'r') {
+                    keybindsForKeys(audio5, event.key.toLowerCase());
+                }
+                if (event.key.toLowerCase() == '5') {
+                    keybindsForKeys(audio6, event.key.toLowerCase());
+                }
+                if (event.key.toLowerCase() == 't') {
+                    keybindsForKeys(audio7, event.key.toLowerCase());
+                }
+                if (event.key.toLowerCase() == '6') {
+                    keybindsForKeys(audio8, event.key.toLowerCase());
+                }
+                if (event.key.toLowerCase() == 'y') {
+                    keybindsForKeys(audio9, event.key.toLowerCase());
+                }
+                if (event.key.toLowerCase() == '7') {
+                    keybindsForKeys(audio10, event.key.toLowerCase());
+                }
+                if (event.key.toLowerCase() == 'u') {
+                    keybindsForKeys(audio11, event.key.toLowerCase());
+                }
+                if (event.key.toLowerCase() == '8') {
+                    keybindsForKeys(audio12, event.key.toLowerCase());
+                }
             }
         })
-    
 
+
+        document.addEventListener('keyup', () => {
+            isKeyPressedJSON[event.key.toLowerCase()] = false;
+            key0.style.backgroundColor = 'white';
+           
+
+        });
 
         //So now, notes automatically generate from just an integer value. All you need to do is figure out... How to play the right sound?
         //You might have to rename some audio files... Or make some sort of array, but just remember that the keys index (or number or whatever) is your friend
@@ -117,7 +169,6 @@
             console.log('hello')
             //while element.classList.contains("classname") - change element's backgroundcolor style to diff color{
             //keys.keysList.contains
-
         }
 
         function stop(id) {
