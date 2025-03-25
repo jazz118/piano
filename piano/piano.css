@@ -3,23 +3,39 @@
 }
 
 body {
-    background-color: rgb(0, 0, 0);
+    overflow-x: visible;
+    background-color: rgb(22, 32, 44);
+}
+
+.pianogames {
+    width: 10%;
+    float: left;
+    margin-left: 1%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+h1 {
+    font-size: 500%;
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-left: 22%;
+    float: left;
+    text-shadow: 2px 2px rgb(216, 25, 25);
 }
  
 #keys {
+    margin-top: 10%;
     border: 3px solid white;
     padding: 0.125em;
     width:100%;
-
-    /*
-    background-color: rgb(255, 255, 255);
-
     height: 510px;
     overflow-x: scroll;
     overflow-y: hidden;
     white-space: nowrap;
-    */
+    clear: both;
 }
+
 
 #keys > li {
     list-style-type: none;
@@ -29,21 +45,18 @@ body {
 
 .white {
     background-color: white;
-
     width: 6em;
     height: 500px;
+
 }
 
 .black {
     background-color: black;
-
     position: relative;
     margin-left: -3em; 
     right:-1.5em;
-
     width: 3em;
     height: 350px;
-
     z-index: 1;
 }
 
@@ -55,3 +68,4 @@ li {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 100%;
 }
+
